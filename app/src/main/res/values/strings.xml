@@ -3,4 +3,13 @@
     <string name="zakat_penghasilan">Zakat Penghasilan</string>
     <string name="jmlh_pendapatan">Jumlah Pendapatan Perbulan</string>
     <string name="bonus_dll">Bonus, THR dan Lainnya</string>
+    <string name="hitung">Hitung</string>
+    <string name="jumlah_zakat">Jumlah Zakat</string>
+    <string name="rp_x"><b>Rp %1$s</b></string>
+    <string name="pendapatan_x">Pendapatan Setahun: %1$s</string>
+    <string name="bonus_x">Bonus, THR dan Lainnya : %1$s</string>
+    <string name="pendapatan_invalid">Pendaptan tidak boleh kosong.</string>
+    <string name="bonus_invalid">Bonus tidak boleh kosong.</string>
+
+
 </resources>

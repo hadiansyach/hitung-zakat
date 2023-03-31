@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btn_weight"
+        android:id="@+id/btn_zakatPhln"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
