@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="powder_blue">#A4B0F5</color>
+    <color name="true_blue">#4567B0</color>
+    <color name="yinMn_blue">#334D84</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#0e0e0e</color>
+    <color name="white">#fafafa</color>
+    <color name="grey">#50514F</color>
+</resources>

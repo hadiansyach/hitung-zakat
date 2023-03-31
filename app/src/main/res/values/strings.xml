@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Hitung Zakat</string>
+    <string name="zakat_penghasilan">Zakat Penghasilan</string>
+    <string name="jmlh_pendapatan">Jumlah Pendapatan Perbulan</string>
+    <string name="bonus_dll">Bonus, THR dan Lainnya</string>
+</resources>
