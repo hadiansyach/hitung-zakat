@@ -31,6 +31,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
+        android:hint="@string/input_gaji"
         app:layout_constraintStart_toStartOf="@+id/placeholderGaji"
         app:layout_constraintTop_toBottomOf="@+id/placeholderGaji" />
 
@@ -41,6 +42,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
+        android:hint="@string/input_bonus"
         app:layout_constraintStart_toStartOf="@+id/placeholderBonus"
         app:layout_constraintTop_toBottomOf="@+id/placeholderBonus" />
 
@@ -66,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/hitung" />
 
     <TextView
-        android:id="@+id/hasilZakat"
+        android:id="@+id/kondisi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -74,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        android:text="@string/jumlah_zakat" />
+        tools:text="@string/kondisi_zakat_x" />
 
     <TextView
         android:id="@+id/uangZakat"
@@ -82,9 +84,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/hasilZakat"
-        app:layout_constraintStart_toStartOf="@+id/hasilZakat"
-        app:layout_constraintTop_toBottomOf="@+id/hasilZakat"
+        app:layout_constraintEnd_toEndOf="@+id/kondisi"
+        app:layout_constraintStart_toStartOf="@+id/kondisi"
+        app:layout_constraintTop_toBottomOf="@+id/kondisi"
         tools:text="@string/rp_x" />
 
     <TextView
@@ -92,15 +94,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uangZakat"
         tools:text="@string/pendapatan_x" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

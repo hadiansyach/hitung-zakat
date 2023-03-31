@@ -18,8 +18,6 @@ class MainActivity : AppCompatActivity() {
             val nextZakatPenghasilanIntent = Intent(this, ZakatPenghasilanActivity::class.java)
             startActivity(nextZakatPenghasilanIntent)
 
-
-
         }
     }
 }
