@@ -8,17 +8,17 @@
 
     <Button
         android:id="@+id/btn_zakatPhln"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:drawableTop="@drawable/ic_uang"
         android:drawableTint="#FEFEFE"
         android:elevation="20dp"
-        android:textSize="10sp"
+        android:paddingTop="8dp"
         android:text="@string/zakat_penghasilan"
         android:textAllCaps="false"
-        android:paddingTop="8dp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
