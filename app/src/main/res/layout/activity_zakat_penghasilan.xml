@@ -29,36 +29,42 @@
         app:layout_constraintStart_toStartOf="@+id/inputGajiBulanan"
         app:layout_constraintTop_toBottomOf="@+id/inputGajiBulanan" />
 
-    <EditText
-        android:id="@+id/inputGajiBulanan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/input_gaji"
-        app:layout_constraintStart_toStartOf="@+id/placeholderGaji"
-        app:layout_constraintTop_toBottomOf="@+id/placeholderGaji" />
+        <EditText
+            android:id="@+id/inputGajiBulanan"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="phone"
+            android:ems="10"
+            android:hint="@string/input_gaji"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/placeholderGaji"
+            app:layout_constraintTop_toBottomOf="@+id/placeholderGaji" />
 
-    <EditText
-        android:id="@+id/inputBonus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/input_bonus"
-        app:layout_constraintStart_toStartOf="@+id/placeholderBonus"
-        app:layout_constraintTop_toBottomOf="@+id/placeholderBonus" />
+        <EditText
+            android:id="@+id/inputBonus"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/input_bonus"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/placeholderBonus"
+            app:layout_constraintTop_toBottomOf="@+id/placeholderBonus" />
 
-    <Button
-        android:id="@+id/hitung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/hitung"
-        app:layout_constraintStart_toStartOf="@+id/inputBonus"
-        app:layout_constraintTop_toBottomOf="@+id/inputBonus" />
+        <Button
+            android:id="@+id/hitung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/hitung"
+            app:layout_constraintStart_toStartOf="@+id/inputBonus"
+            app:layout_constraintTop_toBottomOf="@+id/inputBonus" />
 
     <View
         android:id="@+id/divider"
@@ -73,31 +79,33 @@
         app:layout_constraintTop_toBottomOf="@+id/hitung" />
 
         <TextView
-            android:id="@+id/kondisi"
+            android:id="@+id/statusTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider"
-            tools:text="@string/kondisi_zakat_x"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"/>
+            tools:text="@string/status_zakat_x" />
 
-    <TextView
-        android:id="@+id/uangZakat"
+        <TextView
+        android:id="@+id/uangZakatTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/kondisi"
-        app:layout_constraintStart_toStartOf="@+id/kondisi"
-        app:layout_constraintTop_toBottomOf="@+id/kondisi"
-        tools:text="@string/rp_x" />
+        app:layout_constraintEnd_toEndOf="@+id/statusTextView"
+        app:layout_constraintStart_toStartOf="@+id/statusTextView"
+        app:layout_constraintTop_toBottomOf="@+id/statusTextView"
+        tools:text="@string/zakat_x" />
 
     <TextView
-        android:id="@+id/totalPendapatan"
+        android:id="@+id/pendapatanTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -106,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uangZakat"
+        app:layout_constraintTop_toBottomOf="@+id/uangZakatTextView"
         tools:text="@string/pendapatan_x" />
 
 

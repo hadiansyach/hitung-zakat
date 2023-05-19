@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnZakatPhln.setOnClickListener(){
+        binding.btnZakatPenghasilan.setOnClickListener {
             val nextZakatPenghasilanIntent = Intent(this, ZakatPenghasilanActivity::class.java)
             startActivity(nextZakatPenghasilanIntent)
 
