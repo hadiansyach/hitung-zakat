@@ -1,5 +1,6 @@
 package com.d3if3032.hitungzakat.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -40,6 +41,7 @@ class ZakatPenghasilanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btnHitung.setOnClickListener { hitungZakat() }
         viewModel.getHasilZakat().observe(requireActivity(), { showResult(it) })
+        binding.btnBagikan.setOnClickListener { shareData() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -66,6 +68,7 @@ class ZakatPenghasilanFragment : Fragment() {
             getString(R.string.pendapatan_x, formatUang.format(result.pendapatanPertahun))
         binding.statusTextView.text =
             getString(R.string.status_zakat_x, getStatusLabel(result.status))
+        binding.btnBagikan.visibility = View.VISIBLE
     }
 
     private fun hitungZakat() {
@@ -91,6 +94,19 @@ class ZakatPenghasilanFragment : Fragment() {
             StatusZakat.TIDAK_WAJIB -> R.string.zakat_tidak_wajib
         }
         return getString(stringRes)
+    }
+
+    private fun shareData() {
+        val message = getString(R.string.bagikan_template,
+            binding.uangZakatTextView.text,
+            binding.pendapatanTextView.text
+        )
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
+        if (shareIntent.resolveActivity(
+                requireActivity().packageManager) != null) {
+            startActivity(shareIntent)
+        }
     }
 
 }

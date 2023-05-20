@@ -14,8 +14,9 @@
     <string name="zakat_x"><b>%1s</b></string>
     <string name="pendapatan_x">Pendapatan Pertahun: %1$s</string>
     <string name="bonus_x">Bonus, THR dan Lainnya : %1$s</string>
+    <string name="bagikan_template">Biaya zakat yang harus dibayarkan: %1$s \n\nJumlah %2$s</string>
 
-    <string name="pendapatan_invalid">Pendaptan tidak boleh kosong.</string>
+    <string name="pendapatan_invalid">Gaji tidak boleh kosong.</string>
     <string name="bonus_invalid">Bonus tidak boleh kosong.</string>
     <string name="zakat_tidak_wajib">Tidak Wajib Bayar Zakat, karena Total Pendapatan Pertahun Tidak Sesuai Nisab</string>
     <string name="zakat_wajib">Wajib Bayar Zakat, dengan Jumlah:</string>
@@ -25,5 +26,6 @@
     <string name="copyright">Aplikasi hitung zakat adalah sebuah aplikasi yang dibuat untuk membantu umat Muslim dalam menghitung zakat yang harus mereka bayarkan. \n\nTemukan kodenya di \nhttps://github.com/hadiansyach/hitung-zakat.git \n\nCopyright ©2023 Ihsan Hadiansyach.\nAll rights reserved.</string>
 
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="bagikan">Bagikan</string>
 
 </resources>

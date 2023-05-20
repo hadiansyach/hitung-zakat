@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.d3if3032.hitungzakat.ui.AboutFragment"
-        android:label="AboutFragment"
+        android:label="@string/tentang_aplikasi"
         tools:layout="@layout/fragment_about"/>
 
 </navigation>
