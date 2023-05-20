@@ -22,5 +22,8 @@
     <string name="input_gaji">Input Gaji perbulan</string>
     <string name="input_bonus">Input Bonus, DLL</string>
 
+    <string name="copyright">Aplikasi hitung zakat adalah sebuah aplikasi yang dibuat untuk membantu umat Muslim dalam menghitung zakat yang harus mereka bayarkan. \n\nTemukan kodenya di \nhttps://github.com/hadiansyach/hitung-zakat.git \n\nCopyright ©2023 Ihsan Hadiansyach.\nAll rights reserved.</string>
+
+    <string name="Home">Home</string>
 
 </resources>

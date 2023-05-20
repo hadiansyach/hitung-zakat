@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.d3if3032.hitungzakat.MenuFragment"
+        android:label="@string/Home"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_menuFragment_to_zakatPenghasilanFragment"
+            app:destination="@id/zakatPenghasilanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/zakatPenghasilanFragment"
+        android:name="com.d3if3032.hitungzakat.ui.ZakatPenghasilanFragment"
+        android:label="@string/zakat_penghasilan"
+        tools:layout="@layout/fragment_zakat_penghasilan" />
+
+</navigation>

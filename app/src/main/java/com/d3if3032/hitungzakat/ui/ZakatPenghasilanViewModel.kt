@@ -1,4 +1,4 @@
-package com.d3if3032.hitungzakat
+package com.d3if3032.hitungzakat.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
