@@ -21,7 +21,6 @@ class ZakatPenghasilanViewModel: ViewModel() {
     private fun getStatus(pendapatan: Double): StatusZakat {
         val nisab = 85 * 977000
         val status = if (pendapatan > nisab) {
-
             StatusZakat.WAJIB
         } else {
             StatusZakat.TIDAK_WAJIB

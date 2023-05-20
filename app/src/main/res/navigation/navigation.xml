@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.d3if3032.hitungzakat.MenuFragment"
-        android:label="@string/Home"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_menu">
         <action
             android:id="@+id/action_menuFragment_to_zakatPenghasilanFragment"
@@ -19,6 +19,15 @@
         android:id="@+id/zakatPenghasilanFragment"
         android:name="com.d3if3032.hitungzakat.ui.ZakatPenghasilanFragment"
         android:label="@string/zakat_penghasilan"
-        tools:layout="@layout/fragment_zakat_penghasilan" />
+        tools:layout="@layout/fragment_zakat_penghasilan" >
+        <action
+            android:id="@+id/action_zakatPenghasilanFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.d3if3032.hitungzakat.ui.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/fragment_about"/>
 
 </navigation>
