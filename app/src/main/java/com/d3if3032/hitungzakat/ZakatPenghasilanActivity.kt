@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.d3if3032.hitungzakat.databinding.ActivityZakatPenghasilanBinding
 import com.d3if3032.hitungzakat.model.HasilZakat
 import com.d3if3032.hitungzakat.model.StatusZakat
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 
 class ZakatPenghasilanActivity : AppCompatActivity() {
 
@@ -31,28 +30,29 @@ class ZakatPenghasilanActivity : AppCompatActivity() {
     }
 
     private fun showResult(result: HasilZakat?) {
+        val formatUang = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
         if (result==null) return
-        binding.uangZakatTextView.text = getString(R.string.zakat_x)
-        binding.pendapatanTextView.text = getString(R.string.pendapatan_x)
+        binding.uangZakatTextView.text = getString(R.string.zakat_x, formatUang.format(result.zakat))
+        binding.pendapatanTextView.text = getString(R.string.pendapatan_x, formatUang.format(result.pendapatanPertahun))
+        binding.statusTextView.text = getString(R.string.status_zakat_x, getStatusLabel(result.status))
     }
 
     private fun hitungZakat() {
-
+        val gaji = binding.inputGajiBulanan.text.toString()
+        if (TextUtils.isEmpty(gaji)) {
+            Toast.makeText(this, R.string.pendapatan_invalid, Toast.LENGTH_LONG).show()
+            return
+        }
+        val bonus = binding.inputBonus.text.toString()
+        if (TextUtils.isEmpty(bonus)) {
+            Toast.makeText(this, R.string.bonus_invalid, Toast.LENGTH_LONG).show()
+            return
+        }
+        viewModel.hitungZakat(
+            gaji.toDouble(),
+            bonus.toDouble()
+        )
     }
-
-
-
-
-
-//        val hasilHitungZakatPenghasilan = rumusZakatPenghasilan(pendapatanPertahun)
-//
-//        val formatUang = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
-//
-//        binding.uangZakat.text =
-//            getString(R.string.rp_x, formatUang.format(hasilHitungZakatPenghasilan))
-//        binding.totalPendapatan.text =
-//            getString(R.string.pendapatan_x, formatUang.format(pendapatanPertahun))
-
 
     private fun getStatusLabel(status: StatusZakat): String {
         val stringRes = when (status) {
