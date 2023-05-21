@@ -1,4 +1,4 @@
-package com.d3if3032.hitungzakat.ui
+package com.d3if3032.hitungzakat.ui.zakat_penghasilan
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.d3if3032.hitungzakat.R
 import com.d3if3032.hitungzakat.databinding.FragmentZakatPenghasilanBinding
+import com.d3if3032.hitungzakat.db.ZakatDb
 import com.d3if3032.hitungzakat.model.HasilZakat
 import com.d3if3032.hitungzakat.model.StatusZakat
 import java.text.NumberFormat
@@ -25,7 +26,10 @@ class ZakatPenghasilanFragment : Fragment() {
     private lateinit var binding: FragmentZakatPenghasilanBinding
 
     private val viewModel: ZakatPenghasilanViewModel by lazy {
-        ViewModelProvider(requireActivity())[ZakatPenghasilanViewModel::class.java]
+        val db = ZakatDb.getInstance(requireContext())
+        val factory = ZakatPenghasilanViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[ZakatPenghasilanViewModel::class.java]
+
     }
 
     override fun onCreateView(
@@ -50,11 +54,20 @@ class ZakatPenghasilanFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_about) {
-            findNavController().navigate(
-                R.id.action_zakatPenghasilanFragment_to_aboutFragment
-            )
-            return true
+        when (item.itemId) {
+            R.id.menu_histori -> {
+                findNavController().navigate(
+                    R.id.action_zakatPenghasilanFragment_to_historiFragment
+                )
+                return true
+            }
+
+            R.id.menu_about -> {
+                findNavController().navigate(
+                    R.id.action_zakatPenghasilanFragment_to_aboutFragment
+                )
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -97,14 +110,17 @@ class ZakatPenghasilanFragment : Fragment() {
     }
 
     private fun shareData() {
-        val message = getString(R.string.bagikan_template,
+        val message = getString(
+            R.string.bagikan_template,
             binding.uangZakatTextView.text,
             binding.pendapatanTextView.text
         )
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
         if (shareIntent.resolveActivity(
-                requireActivity().packageManager) != null) {
+                requireActivity().packageManager
+            ) != null
+        ) {
             startActivity(shareIntent)
         }
     }

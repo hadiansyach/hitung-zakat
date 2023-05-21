@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class ZakatEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L,
-    var gaji: Float,
-    var bonus: Float
+    var tanggal: Long = System.currentTimeMillis(),
+    var gaji: Double,
+    var bonus: Double
 )

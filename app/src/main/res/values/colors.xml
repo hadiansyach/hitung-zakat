@@ -8,4 +8,6 @@
     <color name="black">#0e0e0e</color>
     <color name="white">#fafafa</color>
     <color name="grey">#50514F</color>
+    <color name="tidak_wajib">#F57F17</color>
+    <color name="wajib">#2E7D32</color>
 </resources>

@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_histori"
+        android:icon="@drawable/baseline_history_24"
+        android:title="@string/History"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/menu_about"
         android:title="@string/tentang_aplikasi"
         app:showAsAction="never"/>
+
 </menu>

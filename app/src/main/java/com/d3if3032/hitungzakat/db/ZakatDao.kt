@@ -10,6 +10,6 @@ interface ZakatDao {
     @Insert
     fun insert(zakat: ZakatEntity)
 
-    @Query("SELECT * FROM zakat ORDER BY id DESC LIMIT 1")
-    fun getLastZakat(): LiveData<ZakatEntity?>
+    @Query("SELECT * FROM zakat ORDER BY id DESC")
+    fun getLastZakat(): LiveData<List<ZakatEntity?>>
 }
