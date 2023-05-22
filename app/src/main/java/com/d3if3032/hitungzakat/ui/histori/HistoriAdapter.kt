@@ -1,22 +1,32 @@
 package com.d3if3032.hitungzakat.ui.histori
 
+import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.icu.text.SimpleDateFormat
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.d3if3032.hitungzakat.R
 import com.d3if3032.hitungzakat.databinding.ItemHistoriBinding
+import com.d3if3032.hitungzakat.db.ZakatDao
+import com.d3if3032.hitungzakat.db.ZakatDb
 import com.d3if3032.hitungzakat.db.ZakatEntity
 import com.d3if3032.hitungzakat.model.StatusZakat
 import com.d3if3032.hitungzakat.model.hitungZakat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Date
 import java.util.Locale
 
-class HistoriAdapter : ListAdapter<ZakatEntity, HistoriAdapter.ViewHolder>(DIFF_CALLBACK) {
+class HistoriAdapter(fragment: Fragment) : ListAdapter<ZakatEntity, HistoriAdapter.ViewHolder>(DIFF_CALLBACK) {
     companion object {
         private val DIFF_CALLBACK =
             object : DiffUtil.ItemCallback<ZakatEntity>() {
@@ -24,7 +34,10 @@ class HistoriAdapter : ListAdapter<ZakatEntity, HistoriAdapter.ViewHolder>(DIFF_
                     return oldData.id == newData.id
                 }
 
-                override fun areContentsTheSame(oldData: ZakatEntity, newData: ZakatEntity): Boolean {
+                override fun areContentsTheSame(
+                    oldData: ZakatEntity,
+                    newData: ZakatEntity
+                ): Boolean {
                     return oldData == newData
                 }
             }
@@ -37,7 +50,7 @@ class HistoriAdapter : ListAdapter<ZakatEntity, HistoriAdapter.ViewHolder>(DIFF_
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), holder.itemView)
     }
 
     class ViewHolder(
@@ -49,20 +62,42 @@ class HistoriAdapter : ListAdapter<ZakatEntity, HistoriAdapter.ViewHolder>(DIFF_
             Locale("id", "ID")
         )
 
-        fun bind(item: ZakatEntity) = with(binding) {
+        fun bind(item: ZakatEntity,view: View) = with(binding) {
             val hasilZakat = item.hitungZakat()
-            statusZakat.text = hasilZakat.status.toString().substring(0, 1)
+            statusIcon.text = hasilZakat.status.toString().substring(0, 1)
             val colorRes = when (hasilZakat.status) {
                 StatusZakat.WAJIB -> R.color.wajib
                 StatusZakat.TIDAK_WAJIB -> R.color.tidak_wajib
             }
+
             val circleBg = statusIcon.background as GradientDrawable
             circleBg.setColor(ContextCompat.getColor(root.context, colorRes))
-
             tanggalTextView.text = dateFormatter.format(Date(item.tanggal))
-            statusZakat.text = hasilZakat.status.toString()
+            statusZakat.text = hasilZakat.status.toString().substring(0, 1)
             zakatTextView.text = hasilZakat.zakat.toString()
             pendapatanTextView.text = hasilZakat.pendapatanPertahun.toString()
+
+            binding.btnDelete.setOnClickListener{
+                hapusData(item.id, view.context)
+            }
+
+        }
+        private fun hapusData(id: Long, context: Context) {
+            val db = ZakatDb.getInstance(context)
+            val ZakatDao = db.dao
+            MaterialAlertDialogBuilder(context)
+                .setMessage(context.getString(R.string.konfirmasi_hapus))
+                .setPositiveButton(context.getString(R.string.hapus)) { _, _ ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        withContext(Dispatchers.IO) {
+                            ZakatDao.deleteHistory(id)
+                        }
+                    }
+                }
+                .setNegativeButton(context.getString(R.string.batal)) { dialog, _ ->
+                    dialog.cancel()
+                }
+                .show()
         }
     }
 }

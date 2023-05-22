@@ -8,6 +8,9 @@
     <string name="jmlh_pendapatan">Jumlah Gaji Perbulan</string>
     <string name="bonus_dll">Bonus, THR dan Lainnya</string>
     <string name="hitung">Hitung</string>
+    <string name="konfirmasi_hapus">Hapus semua histori?</string>
+    <string name="hapus">Hapus</string>
+    <string name="batal">Batal</string>
 
     <!-- Output format -->
     <string name="status_zakat_x">%1s</string>

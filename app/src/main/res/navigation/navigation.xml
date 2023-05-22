@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/historiFragment"
         android:name="com.d3if3032.hitungzakat.ui.histori.HistoriFragment"
-        android:label="HistoriFragment"
+        android:label="@string/History"
         tools:layout="@layout/fragment_histori"/>
 
 </navigation>
