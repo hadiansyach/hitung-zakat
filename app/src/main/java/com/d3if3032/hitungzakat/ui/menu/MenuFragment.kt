@@ -1,4 +1,4 @@
-package com.d3if3032.hitungzakat
+package com.d3if3032.hitungzakat.ui.menu
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.d3if3032.hitungzakat.R
 import com.d3if3032.hitungzakat.databinding.FragmentMenuBinding
 
 

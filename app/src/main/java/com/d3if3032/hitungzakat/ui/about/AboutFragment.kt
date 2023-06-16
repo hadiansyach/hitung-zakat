@@ -1,4 +1,4 @@
-package com.d3if3032.hitungzakat.ui
+package com.d3if3032.hitungzakat.ui.about
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ class AboutFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAboutBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

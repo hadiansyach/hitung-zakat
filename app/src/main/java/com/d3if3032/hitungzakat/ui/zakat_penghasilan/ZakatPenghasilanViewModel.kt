@@ -16,6 +16,7 @@ import kotlinx.coroutines.withContext
 class ZakatPenghasilanViewModel(private val db: ZakatDao): ViewModel() {
     private val hasilZakat = MutableLiveData<HasilZakat?>()
 
+
     fun hitungZakat(gaji: Double, bonus: Double) {
 
         val dataZakat = ZakatEntity(

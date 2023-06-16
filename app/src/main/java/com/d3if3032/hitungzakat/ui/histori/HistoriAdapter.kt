@@ -3,6 +3,7 @@ package com.d3if3032.hitungzakat.ui.histori
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.icu.text.SimpleDateFormat
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,10 +24,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.NumberFormat
 import java.util.Date
 import java.util.Locale
 
-class HistoriAdapter(fragment: Fragment) : ListAdapter<ZakatEntity, HistoriAdapter.ViewHolder>(DIFF_CALLBACK) {
+class HistoriAdapter : ListAdapter<ZakatEntity, HistoriAdapter.ViewHolder>(DIFF_CALLBACK) {
     companion object {
         private val DIFF_CALLBACK =
             object : DiffUtil.ItemCallback<ZakatEntity>() {
@@ -50,6 +52,7 @@ class HistoriAdapter(fragment: Fragment) : ListAdapter<ZakatEntity, HistoriAdapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Log.d("s", "masuk sini")
         holder.bind(getItem(position), holder.itemView)
     }
 
@@ -64,6 +67,7 @@ class HistoriAdapter(fragment: Fragment) : ListAdapter<ZakatEntity, HistoriAdapt
 
         fun bind(item: ZakatEntity,view: View) = with(binding) {
             val hasilZakat = item.hitungZakat()
+            Log.d("hasil", hasilZakat.pendapatanPertahun.toString())
             statusIcon.text = hasilZakat.status.toString().substring(0, 1)
             val colorRes = when (hasilZakat.status) {
                 StatusZakat.WAJIB -> R.color.wajib
@@ -73,15 +77,17 @@ class HistoriAdapter(fragment: Fragment) : ListAdapter<ZakatEntity, HistoriAdapt
             val circleBg = statusIcon.background as GradientDrawable
             circleBg.setColor(ContextCompat.getColor(root.context, colorRes))
             tanggalTextView.text = dateFormatter.format(Date(item.tanggal))
-            statusZakat.text = hasilZakat.status.toString().substring(0, 1)
-            zakatTextView.text = hasilZakat.zakat.toString()
-            pendapatanTextView.text = hasilZakat.pendapatanPertahun.toString()
+            statusZakat.text = hasilZakat.status.toString()
+            val formatUang = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+
+            zakatTextView.text = formatUang.format(hasilZakat.zakat)
+            pendapatanTextView.text = formatUang.format(hasilZakat.pendapatanPertahun)
 
             binding.btnDelete.setOnClickListener{
                 hapusData(item.id, view.context)
             }
-
         }
+
         private fun hapusData(id: Long, context: Context) {
             val db = ZakatDb.getInstance(context)
             val ZakatDao = db.dao

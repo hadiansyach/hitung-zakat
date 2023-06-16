@@ -10,9 +10,9 @@ import kotlinx.coroutines.withContext
 class HistoriViewModel(private val db: ZakatDao): ViewModel() {
     val data = db.getLastZakat()
 
-    fun hapusData(id: Long) = viewModelScope.launch {
-        withContext(Dispatchers.IO) {
-            db.deleteHistory(id)
-        }
-    }
+//    fun hapusData(id: Long) = viewModelScope.launch {
+//        withContext(Dispatchers.IO) {
+//            db.deleteHistory(id)
+//        }
+//    }
 }
