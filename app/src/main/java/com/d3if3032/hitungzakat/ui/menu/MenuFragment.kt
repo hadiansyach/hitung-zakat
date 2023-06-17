@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.d3if3032.hitungzakat.R
 import com.d3if3032.hitungzakat.databinding.FragmentMenuBinding
+import com.d3if3032.hitungzakat.network.ApiStatus
 
 
 class MenuFragment : Fragment() {
@@ -44,6 +45,24 @@ class MenuFragment : Fragment() {
         }
         viewModel.getData().observe(viewLifecycleOwner) {
             myAdapter.updateData(it)
+        }
+        viewModel.getStatus().observe(viewLifecycleOwner) {
+            updateProgress(it)
+        }
+    }
+
+    private fun updateProgress(status: ApiStatus) {
+        when (status) {
+            ApiStatus.LOADING -> {
+                binding.progressBar.visibility = View.VISIBLE
+            }
+            ApiStatus.SUCCESS -> {
+                binding.progressBar.visibility = View.GONE
+            }
+            ApiStatus.FAILED -> {
+                binding.progressBar.visibility = View.GONE
+                binding.networkError.visibility = View.VISIBLE
+            }
         }
     }
 }

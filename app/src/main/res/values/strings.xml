@@ -36,5 +36,8 @@
     <string name="History">History</string>
     <string name="bagikan">Bagikan</string>
     <string name="jenis_zakat">Jenis Zakat</string>
+    <string name="update_harga_emas">Update Harga Emas</string>
+    <string name="koneksi_error">Koneksi Error</string>
+    <string name="info_harga_emas">Info Harga Emas</string>
 
 </resources>
