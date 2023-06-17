@@ -23,8 +23,9 @@ class MenuViewModel : ViewModel() {
     private fun retrieveData() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val result = EmasApi.service.getEmas()
-                Log.d("Menu ViewModel", "Success: $result")
+//                val result = EmasApi.service.getEmas()
+//                Log.d("Menu ViewModel", "Success: $result")
+                data.postValue(EmasApi.service.getEmas())
             } catch (e: Exception) {
                 Log.d("Menu ViewModel", "Failure: ${e.message}")
             }
