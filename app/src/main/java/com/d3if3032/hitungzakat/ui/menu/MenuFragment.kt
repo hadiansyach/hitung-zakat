@@ -30,9 +30,6 @@ class MenuFragment : Fragment() {
 
         myAdapter = MenuAdapter()
         with(binding.rvUpdateEmas) {
-            addItemDecoration(
-                DividerItemDecoration(context, RecyclerView.VERTICAL)
-            )
             adapter = myAdapter
             setHasFixedSize(true)
         }
