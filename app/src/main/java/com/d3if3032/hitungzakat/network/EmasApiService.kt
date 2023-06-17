@@ -30,9 +30,9 @@ object EmasApi {
         retrofit.create(EmasApiService::class.java)
     }
 
-//    fun getEmasUrl(imageId: String): String {
-//        return "$BASE_URL$imageId.jpg"
-//    }
+    fun getEmasUrl(imageId: String): String {
+        return "$BASE_URL$imageId.jpg"
+    }
 }
 
 //enum class ApiStatus { LOADING, SUCCESS, FAILED }
