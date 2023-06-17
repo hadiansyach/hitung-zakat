@@ -9,6 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:strokeWidth="0dp"
+        app:cardElevation="2dp"
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +27,7 @@
             <com.google.android.material.card.MaterialCardView
                 app:cardCornerRadius="8dp"
                 android:id="@+id/cvEmas"
+                app:strokeWidth="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -47,8 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Update Harga Emas"
-                android:textSize="16dp"
+                android:text="@string/update_harga_emas"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/cvEmas"
                 app:layout_constraintTop_toTopOf="@+id/cvEmas" />
@@ -58,19 +61,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Emas Batangan"
-                android:textSize="16dp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/tvJudul"
-                app:layout_constraintTop_toBottomOf="@id/tvJudul" />
+                app:layout_constraintTop_toBottomOf="@id/tvJudul"
+                tools:text="Emas Batangan" />
 
             <TextView
                 android:id="@+id/tvHargaEmas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Rp 1.000.000/gr"
+                tools:text="Rp 1.000.000/gr"
                 android:textColor="@color/red"
                 android:textStyle="bold"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/tvJenisEmas"
                 app:layout_constraintTop_toBottomOf="@id/tvJenisEmas" />
 
@@ -78,8 +82,8 @@
                 android:id="@+id/tvTglUpdateHarga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12 Juli 1994"
-                android:textSize="10sp"
+                tools:text="12 Juli 1994"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/cvEmas"
                 app:layout_constraintStart_toStartOf="@id/tvHargaEmas" />
 
