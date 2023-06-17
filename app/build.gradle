@@ -37,6 +37,9 @@ android {
 }
 
 dependencies {
+//    work manager
+    implementation 'androidx.work:work-runtime-ktx:2.8.1'
+
 //    retrofit
     implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
