@@ -42,6 +42,8 @@
 
 <!--    notification    -->
     <string name="channel_name">Updater</string>
-    <string name="channel_desc">Info Update Harga Emas Terbaru</string>
+    <string name="channel_desc">Update data emas otomatis</string>
+    <string name="notif_title">Info harga emas terbaru!</string>
+    <string name="notif_text">Cek sekarang biar melek harga emas..</string>
 
 </resources>
