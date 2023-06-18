@@ -40,4 +40,8 @@
     <string name="koneksi_error">Koneksi Error</string>
     <string name="info_harga_emas">Info Harga Emas</string>
 
+<!--    notification    -->
+    <string name="channel_name">Updater</string>
+    <string name="channel_desc">Info Update Harga Emas Terbaru</string>
+
 </resources>
