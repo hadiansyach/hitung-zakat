@@ -50,7 +50,7 @@ class MenuViewModel : ViewModel() {
 
     fun scheduleUpdater(app: Application) {
         val request = OneTimeWorkRequestBuilder<UpdateWorker>()
-            .setInitialDelay(1, TimeUnit.MINUTES)
+            .setInitialDelay(10, TimeUnit.SECONDS)
             .build()
         WorkManager.getInstance(app).enqueueUniqueWork(
             UpdateWorker.WORK_NAME,
