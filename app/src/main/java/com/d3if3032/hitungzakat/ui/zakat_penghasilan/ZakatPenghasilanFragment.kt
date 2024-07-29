@@ -2,13 +2,16 @@ package com.d3if3032.hitungzakat.ui.zakat_penghasilan
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -43,6 +46,8 @@ class ZakatPenghasilanFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.inputGajiBulanan.addTextChangedListener(CurrencyTextWatcher(binding.inputGajiBulanan))
+        binding.inputBonus.addTextChangedListener(CurrencyTextWatcher(binding.inputBonus))
         binding.btnHitung.setOnClickListener { hitungZakat() }
         viewModel.getHasilZakat().observe(requireActivity(), { showResult(it) })
         binding.btnBagikan.setOnClickListener { shareData() }
@@ -85,12 +90,12 @@ class ZakatPenghasilanFragment : Fragment() {
     }
 
     private fun hitungZakat() {
-        val gaji = binding.inputGajiBulanan.text.toString()
+        val gaji = binding.inputGajiBulanan.text.toString().replace("[Rp,.]".toRegex(), "")
         if (TextUtils.isEmpty(gaji)) {
             Toast.makeText(context, R.string.pendapatan_invalid, Toast.LENGTH_LONG).show()
             return
         }
-        val bonus = binding.inputBonus.text.toString()
+        val bonus = binding.inputBonus.text.toString().replace("[Rp,.]".toRegex(), "")
         if (TextUtils.isEmpty(bonus)) {
             Toast.makeText(context, R.string.bonus_invalid, Toast.LENGTH_LONG).show()
             return
@@ -124,5 +129,33 @@ class ZakatPenghasilanFragment : Fragment() {
             startActivity(shareIntent)
         }
     }
+}
 
+class CurrencyTextWatcher(private val editText: EditText) : TextWatcher {
+    private var current = ""
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+    override fun afterTextChanged(s: Editable?) {
+        if (s.toString() != current) {
+            editText.removeTextChangedListener(this)
+
+            val cleanString = s.toString().replace("[Rp,.]".toRegex(), "")
+
+            val parsed = cleanString.toDoubleOrNull()
+            val formatted = parsed?.let {
+                NumberFormat.getCurrencyInstance(Locale("in", "ID")).apply {
+                    maximumFractionDigits = 0
+                }.format(it)
+            } ?: ""
+
+            current = formatted
+            editText.setText(formatted)
+            editText.setSelection(formatted.length)
+
+            editText.addTextChangedListener(this)
+        }
+    }
 }
